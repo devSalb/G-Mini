@@ -1,0 +1,95 @@
+<div class="row">
+    <div class="col-10 h3">
+        {{funcionario.nome}}
+    </div>
+    <div class="col-2 text-end display-6">
+        <span class="mark">Faltas</span>
+    </div>
+</div>
+<hr>
+
+<table class="table table-bordered">
+    <thead class="text-center bg-secondary text-light">
+        <tr>
+            <td>N/O</td>
+            <td>Data</td>
+            <td>Falatas</td>
+            <td colspan="2">Obs</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        {{#each faltas}}
+        <tr>
+            <td> {{numOrdem}} </td>
+            <td class="text-center"> {{data}} </td>
+            <td class="text-center"> {{faltas}} </td>
+            {{#if justificada}}
+            <td> Justificadas </td>
+            {{else}}
+            <td class="text-danger"> Não justificadas </td>
+            <td class="text-center"> <a href="/rH/justificarFaltas/{{_id}}" class="btn btn-sm btn-secondary">Justificar</a> </td>
+            {{/if}}
+        </tr>
+        {{else}}
+        {{/each}}
+    </tbody>
+</table>
+
+
+<!-- Modal Adicionar Modulo-->
+
+<div class="modal" tabindex="-1" data-bs-backdrop="static" id="adModulo">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-primary">Novo Modulo</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/pedagogico/adModulo" method="post" class="p-3">
+
+                <div class="row">
+                    <div class="col-6">
+                        <label for="codigo">Código</label>
+                        <input type="text" name="codigo" id="codigo" class="form-control" required>
+                    </div>
+                    <div class="col-6">
+                        <label for="nomeModulo">Nome do Modulo</label>
+                        <input type="text" name="nomeModulo" id="nomeModulo" class="form-control" required>
+                    </div>
+
+                    
+
+                    {{!-- tempo --}}
+                    <div class="col-4 offset-4">
+
+                    <label for="tempoSemanal" class="mt-2">Tempo Semanal</label>
+                    <input type="number" name="tempoSemanal" id="tempoSemanal" value="" required class="form-control">
+                    </div>
+                </div>
+
+                <div class="modal-footer text-center mt-3">
+                    <input type="hidden" name="idCurso" value="{{curso._id}}">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Adicionar</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<script src="assets/bootstrap.bundle.min.js" class="img-fluid"></script>
+<script>
+    function adTurma() {
+
+        let el = document.getElementById('adTurma');
+        let minha_modal = new bootstrap.Modal(el);
+        minha_modal.show();
+    }
+
+
+
+
+</script>

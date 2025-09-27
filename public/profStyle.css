@@ -1,0 +1,9 @@
+
+.d-flex {
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(50, 50, 105, 0.149) 0px 2px 5px opx, rgba(0, 0, 0, 0.05);
+    border-radius: 0.3rem;
+    margin: 0 auto;
+    width: 50%;
+}

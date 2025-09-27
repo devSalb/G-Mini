@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-8">
+        <div class="display-6">Formadores</div>
+    </div>
+    <div class="col-4 text-end pt-4"> <button class="btn btn-sm btn-secondary "><a href="/rH/adFuncionario"
+                class="nav-link">Adicionar</a></button> </div>
+</div>
+<hr>
+{{#each funcionarios}}
+<div class="card ps-3 py-1 mt-1 nav-link">
+    <div class="row">
+        <div class="col-8">
+            <a href="" class="nav-link"> {{nome}} </a>
+        </div>
+        <div class="col-4 text-end">
+          <a href="/formador/{{_id}}" class="btn text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-eye" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+                            <path
+                                d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
+                        </svg>
+                    </a>
+                    {{!-- 
+            <a href="/rH/dispensar/{{_id}}"><button class="btn btn-sm btn-primary opacity-50" >Dispensar</button></a>
+            <a href="/rH/marcarFalta/{{_id}}"><button class="btn btn-sm btn-light" >Marcar falta</button></a>
+ --}}
+            <a href="/rH/editFuncionario"><button class="btn btn-sm btn-secondary" >Editar</button></a>
+            <a href="/rH/deletarFuncionario/{{_id}}" class="btn btn-sm btn-danger">Deletar</a>
+        </div>
+    </div>
+</div>
+{{else}}
+<div class="text-center">Não ha funcionário cadastrado</div>
+{{/each}}
+
+
+
+
+<!-- Modal -->
+
+<div class="modal" tabindex="-1" data-bs-backdrop="static" id="deletarFuncionario" >
+  <div class="modal-dialog modal-dialog-centered">
+   <form action="/rH/deletarFuncionario" method="post">
+       <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Deletar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body nome text-danger input-box-filtro">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Feichar</button>
+        <a href="#" onclick="mostrar2()"><button  type="submit" class="btn btn-primary">Consultar</button></a>
+      </div>
+    </div>
+   </form>
+  </div>
+</div>
+
+
+<script src="assets/bootstrap.bundle.min.js" class="img-fluid"></script>
+<script>
+  function deletarFuncionario(nome) {
+    console.log(nome)
+    let el = document.getElementById('deletarFuncionario');
+    let minha_modal = new bootstrap.Modal(el);
+    
+    
+    
+    minha_modal.show();
+  }
+  
+
+
+</script>

@@ -1,0 +1,54 @@
+<div class="container mt-5">
+    <div class="col-6 offset-3 card card-body">
+        <div class="h3">Detalhes da candidatura</div>
+        <hr>
+        <div class="row">
+            <div class="col-6">
+                <p><span class="fw-bold">Nome:</span> {{formando.nome}} </p>
+            </div>
+            <div class="col-6">
+                <p><span class="fw-bold">Estado: </span> {{#if formando.matriculado}} <span class="bg-primary text-light p-1 fw-bold"> Matriculado </span> {{else}} <span class="mark p-1 text-danger"> {{formando.estado}} </span> {{/if}} </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p><span class="fw-bold">Hablitações Literárias:</span> {{formando.nivelAcademico}} </p>
+            </div>
+            <div class="col-6">
+                <p><span class="fw-bold">Código:</span> {{formando.numero}} </p>
+            </div>
+        </div>
+
+        <p><span class="fw-bold">Curso:</span> {{formando.curso}} </p>
+        <p><span class="fw-bold">Dia de inscrição:</span> {{formando.dataInscrito}} </p>
+
+        <hr>
+        <div class="footer">
+            <div class="row">
+                <div class="col-4">
+
+                    <a href="/pedagogico/comprovativoPDF/{{formando._id}}" class="btn btn-sm btn-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-download" viewBox="0 0 16 16">
+                            <path
+                                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
+                            <path
+                                d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z" />
+                        </svg> Baixar
+                    </a>
+                    <a href="/usuarios/login" class="btn btn-sm btn-primary">Logar</a>
+                </div>
+                <div class="col-8 text-center lead">
+                    <a href="/formando/ficha/{{formando.usuario}}">
+                    Carrega seus documentos
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="text-center lead mt-3">
+        <span class="fw-bold text-danger">Parabéns!</span> Você concluio com éxito a primeira etapa da inscrição. Agora, para finalizar e validar sua Candidatura carrega seus documentos, clicando no link acima.
+    </div>
+</div>

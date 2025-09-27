@@ -1,0 +1,157 @@
+.principal {
+    position: relative;
+    top: -1.5rem;
+    width: 100%;
+    padding: 0rem;
+}
+
+.principal img {
+    position: relative;
+    width: 100%;
+    height: 65%;
+    box-shadow: 1px 1px 1px black
+}
+.principal figcaption{
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    background: rgba(0, 0, 0, .4);
+    color: white;
+    width: 92%;
+    height: 65%;
+    padding: 10px;
+    transition: background 1s;
+}
+.principal figcaption:hover {
+    background-color: rgba(0, 0, 0, .5);
+}
+.principal figcaption div {
+    width: 70%;
+    text-align: justify;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.principal figcaption a {
+    position: relative;
+    text-decoration: none;
+    background-color: rgba(128, 112, 49, 0.98);
+    color: #fff;
+    font-size: 14pt;
+    width: 100%;
+    transition: background 0.2s;
+}
+.principal figcaption a:hover{
+    background-color: rgb(91, 78, 26);
+}
+.principal figcaption span {
+    position: absolute;
+    width: 50rem;
+    font-size: 14pt;
+    margin: 0rem !important;
+    padding: 0px !important;
+    font-style: oblique;
+}
+
+.principal aside {
+    position: absolute;
+    top: 2rem;
+    margin-left: -66rem;
+    color: rgba(128, 112, 49, 0.98);
+    
+}
+/* .principal aside h3 {
+    text-shadow: 1px 1px 4px rgba(189, 155, 15, 0.98);
+} */
+
+.principal aside p {
+    margin: 0rem;
+    padding: 0rem;
+    font-size: small;
+    margin-right: -1.5rem;
+}
+
+.ult-noticias {
+    position: absolute;
+    top: 8rem;
+    width: 100%;
+    height: 75%;
+    margin-left: -60rem;
+    color: #fff;
+    background-color: rgba(107, 96, 49, 0.98);
+}
+.notPrinc {
+    position: absolute;
+    /* top: 8rem; */
+    width: 27%;
+    height: 75%;
+    margin-left: 50rem;
+    color: #fff;
+    /* background-color: rgba(128, 112, 49, 0.98); */
+}
+.bolder {
+    border: #625f5f solid 1px;
+    
+}
+
+/* CONFIG PRINCIPAL 2 */
+.principal2 {
+    position: absolute;
+    top: 27rem;
+    margin-left: 8rem;
+    text-align: justify;
+}
+.cursos{
+    font-size: 10pt;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.principal2 a{
+    text-decoration: none;
+    color: #625f5f;
+}
+
+.inscricao-aberta {
+    position: absolute;
+    top: 16.5rem;
+    left: 40rem;
+}
+.inscricao-aberta span {
+    position: relative;
+    top: 0.5rem;
+    left: -1.9rem;
+}
+.foto-sobre img {
+    width: 100%;
+}
+
+.menu-item-principal{
+    display: inline-block;
+    border: 1px solidrgba(107, 96, 49, 0.98);
+    margin: 0px;
+    width: 100%;
+     box-shadow: 0px 0px 1px rgba(0, 0, 0,.3); 
+    -webkit-transition: all .2s ease-in; 
+}
+
+.menu-item-principal:hover {
+    -webkit-transform: scale(1.1) ;
+}
+
+.text-not {
+    position: relative;
+    margin-right: 50rem;
+    margin-top: 1rem;
+    padding: 0rem;
+}
+
+.altura {
+    height: 240px;
+    width: 500px;
+}
+
+.altura h5 {
+    text-align: start;
+}
+
+.conteiner-larg{
+    width: 95rem;
+    margin-left: -120px;
+}

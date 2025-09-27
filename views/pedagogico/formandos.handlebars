@@ -1,0 +1,142 @@
+<div class="container">
+    <div class="row">
+        <div class="col-5 h3 text-primary">Administração de Formandos</div>
+        <div class="col-5 pesquisa pt-2 text-primary">
+            <form action="/pedagogico/pesquisarFormando" method="post">
+                <input type="text" name="pesquisa" class="text-center" placeholder="Nome, código, província ou nº BI">
+                <button type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-search bglight" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                </button>
+            </form>
+
+        </div>
+        {{#if autorizado}}
+        <div class="col-2 text-primary text-end"><a href="/pedagogico/novoFormando" class="nav-link">+ Novo</a></div>
+        {{else}}{{/if}}
+    </div>
+    <hr class="py-1 bg-primary">
+
+    <table class="table table-sm text-primary">
+        <thead>
+            <tr class="text-center fw-bold">
+
+                <td>Nº</td>
+                <td>Nome Completo</td>
+                <td>Centro</td>
+                <td>Província</td>
+                <td>Nº do Documento</td>
+                <td>Idade</td>
+                <td>Estado</td>
+                <td>Ver</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each formandos}}
+
+            <tr class="">
+                <td> {{numOrdem}} </td>
+                <td> {{nome}} </td>
+                <td> {{centro}} </td>
+                <td class="text-center"> {{provincia}} </td>
+                <td class="text-center"> {{numBI}} </td>
+                <td class="text-center"> {{idade}} anos </td>
+                <td class="text-center"> {{estadoCivil}} </td>
+                <td class="text-center" class="text-center ">
+                    <a href="/formando/ficha/{{usuario}}" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-eye" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+                            <path
+                                d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
+                        </svg>
+                    </a>
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+
+                <td colspan="8" class="text-center p-5 text-dark lead">Sem Formandos cadastrados</td>
+            </tr>
+            {{/each}}
+
+        </tbody>
+    </table>
+</div>
+
+
+{{!-- CANDIDATURAS --}}
+
+{{#if autorizado}}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-10 h4 text-primary">Candidatos / Pré - Inscritos</div>
+        <div class="col-2 text-end">
+            <a href="/pedagogico/listasPDF" class="btn btn-sm btn-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-download" viewBox="0 0 16 16">
+                            <path
+                                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
+                            <path
+                                d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z" />
+                        </svg> Lista PDF
+            </a>
+        </div>
+    </div>
+    <hr class="py-1 bg-primary">
+
+    <table class="table table-sm text-primary">
+        <thead>
+            <tr class="text-center fw-bold">
+
+                <td>Nº</td>
+                <td>Nome Completo</td>
+                <td>Centro</td>
+                <td>Província</td>
+                <td>Nº do Documento</td>
+                <td>Idade</td>
+                <td>Estado</td>
+                <td>Ver</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each candidatos}}
+
+            <tr class="">
+                <td> {{numero}} </td>
+                <td> {{nome}} </td>
+                <td> {{centro}} </td>
+                <td class="text-center"> {{provincia}} </td>
+                <td class="text-center"> {{numBI}} </td>
+                <td class="text-center"> {{idade}} anos </td>
+                <td class="text-center"> {{estadoCivil}} </td>
+                <td class="text-center" class="text-center ">
+                    <a href="/formando/ficha/{{usuario}}" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-eye" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+                            <path
+                                d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
+                        </svg>
+                    </a>
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+
+                <td colspan="8" class="text-center p-5 text-dark lead">Sem Formandos cadastrados</td>
+            </tr>
+            {{/each}}
+
+        </tbody>
+    </table>
+</div>
+
+{{else}}{{/if}}

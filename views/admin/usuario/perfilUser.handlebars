@@ -1,0 +1,189 @@
+<div class="container">
+<div class="mark h2 fw-bold">Perfil</div>
+<div class="row accordion" id="accordionExample">
+
+    {{!-- DADOS PESSOAIS --}}
+    <div class="col-4">
+        <div class="accordion-item">
+            <h2 class="accordion-header bg-secondary">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    Dados Pessoais
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>Nome: <span class="fw-bold opacity-50"> {{user.nome}} </span> </p>
+                    <p>Nº BI: <span class="fw-bold opacity-50"> {{user.numBI}} </span> </p>
+                    <p>Telefone: <span class="fw-bold opacity-50"> {{user.telefone}} </span> </p>
+                    <div class="text-center mt-3">
+                        <a href="#" onclick="editDadosPessoais()" class="btn btn-sm btn-primary">Editar Dados</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{!-- OUTRAS INFORMAÇÕES --}}
+    <div class="col-8">
+        <div class="accordion-item">
+            <h2 class="accordion-header bg-secondary">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    Outras Informações
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>Área de Formação: <span class="fw-bold opacity-50"> {{user.area}} </span></p>
+                    <p>Curso: <span class="fw-bold opacity-50"> {{user.cursos}} </span></p>
+                    <p>E-Mail: <span class="fw-bold opacity-50"> {{user.username}} </span></p>
+                        <a href="#" onclick="editOutrasInformacoes()" class="btn btn-sm btn-primary">Editar Informações</a>
+
+                    <hr class="mt-5">
+                    <div class="row">
+                        <div class="col-8">
+                            <p>Categoria: <span class="fw-bold opacity-50"> {{user.categoria}} </span></p>
+                            <p>Usuário: <span class="fw-bold opacity-50"> {{user.username}} </span></p>
+                        </div>
+                        <div class="col-4 text-end py-2">
+                            <button onclick="editarSenha()" class="btn btn-sm btn-secondary" >Alterar a Senha</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+</div>
+</div>
+
+
+
+
+<!-- Modal Editar Dados Pessoais-->
+
+<div class="modal" tabindex="-1" data-bs-backdrop="static" id="editDadosPessoais">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-primary">Editar Dados Pessoal</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/usuario/editPerfilUser" method="post" class="p-3">
+
+                
+                        <label for="nome">Nome</label>
+                        <input type="text" name="nome" value="{{user.nome}}" id="nome" class="form-control" required>
+                
+                
+                        <label for="numBI" class="mt-2">Nº BI</label>
+                        <input type="text" name="numBI" id="numBI" value="{{user.numBI}}" class="form-control" required>
+
+                              
+
+                    <label for="telefone" class="mt-3">Telefone</label>
+                    <input type="text" name="telefone" value="{{user.telefone}}" id="telefone" required class="form-control">
+                
+                
+
+                <div class="modal-footer text-center mt-3">
+                    <input type="hidden" name="idUser" value="{{user._id}}" id="">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Guardar</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Modal Editar Outras Informações-->
+
+<div class="modal" tabindex="-1" data-bs-backdrop="static" id="editOutrasInformacoes">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-primary">Editar Informações</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/usuario/editOutInformacoes" method="post" class="p-3">
+
+                
+    
+                
+                        <label for="area" class="mt-2">Área de Formação</label>
+                        <input type="text" name="area" id="are" value="{{user.area}}" class="form-control" required>
+
+                              
+
+                    <label for="curso" class="mt-3">Curso</label>
+                    <input type="text" name="cursos" value="{{user.cursos}}" id="curso" required class="form-control">
+                
+                
+
+                <div class="modal-footer text-center mt-3">
+                    <input type="hidden" name="idUser" value="{{user._id}}" id="">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Guardar</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Modal Editar Senha-->
+<div class="modal" tabindex="-1" data-bs-backdrop="static" id="editarSenha">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-primary">Editar Informações</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/usuario/editarSenha" method="post" class="p-3 text-center">
+
+                
+    
+                
+                        <label for="senha" class="mt-2">Digita a Nova senha</label>
+                        <input type="password" name="senha" id="senha"  class="text-center form-control" required>
+                
+                        <label for="novaSenha" class="mt-2">Repete a Nova senha</label>
+                        <input type="password" name="senha2" id="novaSenha"  class="text-center form-control" required>
+                
+
+                <div class="modal-footer text-center mt-3">
+                    <input type="hidden" name="idUser" value="{{user._id}}" id="">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Guardar</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<script src="assets/bootstrap.bundle.min.js" class="img-fluid"></script>
+<script>
+    function editDadosPessoais() {
+
+        let el = document.getElementById('editDadosPessoais');
+        let minha_modal = new bootstrap.Modal(el);
+        minha_modal.show();
+    }
+
+    function editOutrasInformacoes() {
+        let el = document.getElementById('editOutrasInformacoes');
+        let minha_modal = new bootstrap.Modal(el);
+        minha_modal.show();
+    }
+
+    function editarSenha() {
+        let el = document.getElementById('editarSenha');
+        let minha_modal = new bootstrap.Modal(el);
+        minha_modal.show();
+    }
+
+    </script>

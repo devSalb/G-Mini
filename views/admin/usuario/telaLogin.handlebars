@@ -1,0 +1,105 @@
+<div class="container">
+    <div class="row">
+        <div class="col-8 py-5">
+            <div class="display-6 tead mt-5">
+                Ainda não possui uma conta no G-MINI <br> Criea sua conta agora mesmo!
+            </div>
+                <hr>
+                <p> <a href="#" onclick="criarConta()" class="nav-link text-primary lead"> Clica aui para criar! </a></p>
+                <div class="lead mt-3">
+                    Faça o control das notas dos teus alunos gerindo as tuas minipautas em qualquer lugar. Esta é a oportunidade de evitares atrasos no lançamento de notas nas Pautas da tua instituição.
+                </div>
+        </div>
+        <div class="col-4 mybox card p-5 ">
+                <h6 class="text-center fw-bold" ></h6>
+            <hr>
+            <h1 class="text-center mybox fw-bold opacity-50 mybg-primary"> G-MINI </h1>
+            {{#if error}}
+            <div class="alert alert-danger">{{error}}</div>
+            {{else}}
+            {{/if}}
+            <hr>
+            <div class="card p-3">
+                <h3 class="text-center" ></h3>
+                <div class="card-body">
+                    <form action="/usuario/login" method="post">
+                        <input type="text" name="username" placeholder="Usuário" class="form-control text-center" aria-placeholder="Usuário" required>
+                        <input type="password" name="senha" placeholder="Senha" class=" mt-2 form-control text-center" aria-placeholder="Senha" required>
+
+                        <button type="submit" class="btn btn-primary mt-2 form-control ">Logar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center"><span class="text-italic" >  </span></div>
+        </div>
+        
+    </div>
+</div>
+
+<!-- Modal cadastrarse-->
+
+<div class="modal" tabindex="-1" data-bs-backdrop="static" id="criarConta">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title text-primary">Registo de Conta</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/rh/adFuncionario" method="post" class="p-3">
+
+        <div class=" text-center">
+
+          <label for="nome">Nome</label>
+          <input name="nome" id="formandoNoCentro" class="form-control text-center mt-2" required>
+
+          <label for="emai">E-Mail</label>
+          <input type="email" name="email" class="form-control" required>
+
+          <label for="telefone">Telefone</label>
+          <input type="text" name="telefone" placeholder="Opcional" class="form-control text-end">
+
+          <label for="senha">Senha</label>
+          <input type="password" name="senha" id="senha1" class="form-control" required>
+          
+          <label for="senha2">Confirma a senha</label>
+          <input type="password" name="senha2" onclick="aviso()" id="senha2" class="form-control" required>
+          {{!-- <label for="aviso" id="aviso">....</label> --}}
+
+          <input type="hidden" name="categoria" value="Professor">
+          <input type="hidden" name="cliente" value="cliente">
+
+        </div>
+
+        <div class=" text-center mt-3">
+          <input type="hidden" name="formandoNoCentro" value="não">
+          <button type="submit" class="btn btn-sm btn-primary form-control">Continuar</button>
+          <button type="button" class="btn btn-secondary btn-sm mt-2 form-control"
+            data-bs-dismiss="modal">Cancelar</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<script src="assets/bootstrap.bundle.min.js" class="img-fluid"></script>
+<script>
+    function criarConta() {
+
+        let el = document.getElementById('criarConta');
+        let minha_modal = new bootstrap.Modal(el);
+        minha_modal.show();
+    }
+
+    function adModulo() {
+
+        let el = document.getElementById('adModulo');
+        let minha_modal = new bootstrap.Modal(el);
+        minha_modal.show();
+    }
+
+
+
+
+</script>

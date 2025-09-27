@@ -1,0 +1,38 @@
+.capa {
+    height: 25rem;
+}
+
+.capa-span {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 25rem;
+    margin-left: 0.8rem;
+    width: 83.3%;
+    transition: background 1s;
+}
+.capa-span:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.capa-informacao {
+    width: 100%;
+    height: 70%;
+}
+
+.new-card {
+    border: 1px solid #ddd;
+    height: 15rem;
+}
+
+.mybtn-info {
+    border-color: aqua;
+}
+.mybtn-secondary {
+    border-color: rgb(78, 80, 80);
+}
+.mybtn-danger {
+    border-color: rgb(248, 16, 16);
+}
+
+
+/* PAUTA */

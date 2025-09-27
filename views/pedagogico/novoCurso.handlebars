@@ -1,0 +1,131 @@
+<div class="container">
+    <div class="h3">Cursos > Novo</div>
+    {{#each mesageErr}}
+    <div class="alert alert-danger">{{texto}}</div>
+    {{else}}
+    {{/each}}
+    <form action="/pedagogico/novoCursoSave" method="post">
+        <div class="row mt-2 ">
+            <div class="col-6">
+                <label for="familia">Familia</label>
+                <input type="text" name="familia" value="{{curso.familia}}" class="form-control" id="familia">
+            </div>
+            <div class="col-6">
+                <label for="centro">Centro</label>
+                <select name="centro" class="form-control" required id="centro">
+                    <option value="">Selecionar</option>
+                    <option value="Centro de Formação Profissional do Andulo">Centro de Formação Profissional do Andulo
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-6">
+                <label for="codigo">Código do Curso <code>*</code></label>
+                <input type="text" name="codigoCursoFake" value="{{codCurso}}" class="form-control" id="codigo" disabled>
+                <input type="hidden" name="codigoCurso" value="{{codCurso}}" class="form-control">
+            </div>
+            <div class="col-6">
+                <label for="nomeCurso">Nome do Curso <code>*</code></label>
+                <input type="text" name="nomeCurso" value="{{curso.nomeCurso}}" class="form-control" id="nomeCurso" required>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-3">
+                <label for="duracao">Duração <code>*</code></label>
+                <input type="text" name="duracao" value="{{curso.duracao}}" class="form-control" id="duracao" required>
+            </div>
+            <div class="col-3">
+                <label for="tipoPrograma">Tipo de Programa </label>
+                <select name="tipoPrograma" class="form-control" id="tipoPrograma">
+                    <option value="{{curso.tipoPrograma}}"> {{curso.tipoPrograma}} </option>
+                    <option value="Formação Convencional">Formação Convencional</option>
+                </select>
+            </div>
+            <div class="col-3">
+                <label for="notaMinima">Nota Mímima</label>
+                <input type="number" name="notaMinima" value="{{curso.notaMinima}}" id="notaMinima" min="0" max="20" class="form-control">
+            </div>
+            <div class="col-3">
+                <label for="regraCalculo">Regra de Cálculo</label>
+                <select name="regraCalculo" class="form-control" id="regraCalculo">
+                    <option value="{{curso.regra}}"> {{curso.regra}} </option>
+                    <option value="Por pesos">Por pesos</option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-3">
+                <label for="modalidade">Modalidade</label>
+                <input type="text" name="modalidade" value="{{curso.modalidade}}" id="modalidade" class="form-control">
+            </div>
+            <div class="col-3">
+                <label for="dataRevisao">Data de revisão</label>
+                <input type="date" name="dataRevisao" value="{{dataRevisao}}" id="dataRevisao" class="form-control">
+            </div>
+            <div class="col-6">
+                <label for="certificacao" class="text-center">Certificação de Formação</label>
+                <div class="row">
+                    <div class="col-4">
+                        <input type="radio" name="certificacao" value="naoCertificado" id="">
+                        <label for="naoCertificado">Sem certificado</label>
+                    </div>
+                    <div class="col-4">
+                        <input type="radio" name="certificacao" value="comAv" id="">
+                        <label for="comAv">Com avaliação</label>
+                    </div>
+                    <div class="col-4">
+                        <input type="radio" name="certificacao" value="participacao" id="">
+                        <label for="participacao">Participação</label>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-3">
+                <label for="lugaresMinimo">Nº de Lugares Mínimo <code>*</code></label>
+                <input type="number" name="lugaresMinimo" value="{{curso.lugaresMinimo}}" id="lugaresMinimo" min="0" max="200" class="form-control" required>
+            </div>
+            <div class="col-3">
+                <label for="numLMax">Nº de Lugares Maximo <code>*</code></label>
+                <input type="number" name="lugaresMaximo" value="{{curso.lugaresMaximo}}" min="0" max="200" class="form-control" required>
+            </div>
+            <div class="col-3">
+                <label for="tipoFormacao">Tipo de Formação</label>
+                <select name="tipoFormacao" class="form-control" id="tipoFormacao">
+                    <option value="{{curso.tipoFormacao}}"> {{curso.tipoFormacao}} </option>
+                    <option value="Formação Contínua">Formação Contínua</option>
+                </select>
+            </div>
+            <div class="col-3">
+                <label for="avaliacao">Avaliação</label>
+                <select name="avaliacao" class="form-control" id="avaliacao">
+                    <option value="{{curso.avaliacao}}"> {{curso.avaliacao}} </option>
+                    <option value="Qualitativa">Qualitativa</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-6">
+                <label for="descricao">Descrição <code>*</code></label>
+                <input type="text" name="descricao" value="{{curso.descricao}}" class="form-control" id="descricao">
+            </div>
+            <label for="programa">Programa <code>*</code></label>
+            <div class="col-6">
+                <input type="text" name="programa" value="{{curso.programa}}" class="form-control" id="programa">
+            </div>
+        </div>
+        <div class=" modal-footer">
+            <a href="/pedagogico/cursos" class="btn btn-sm btn-secondary mx-3">Cancelar</a>
+            <button type="submit" class="btn btn-sm btn-success">Guardar</button>
+        </div>
+    </form>
+</div>

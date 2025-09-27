@@ -1,0 +1,316 @@
+
+.mycard {
+    align-items: center;
+    text-align: center;
+}
+.mynav li {
+    background: rgb(233, 166, 166);
+    list-style: none;
+}
+
+/*CONFIGURAÇÃO DO ALBUM DE FOTOS*/
+.mycard{
+    background: #ffffff;
+    list-style: none;
+    padding: 10px;
+    margin: 0px auto;
+}
+.mycard li{
+    display: inline-block;
+    background-color: aqua;
+    width: 200px;
+    height: 200px;
+    border: 5px solid #ffffff;
+    margin: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0,.3);
+    -webkit-transition: all .4s ease-in; 
+}
+.mycard li:hover{
+    -webkit-transform: scale(1.5) ;
+}
+.mycard li span{
+    opacity: 0;
+    color: #ffffff;
+    font-size: 10pt;
+    text-shadow: 1px 1px 1px #8a7b7b;
+}
+.mycard li span:hover {
+    opacity: 1;
+}
+
+/* CONF TURMAS */
+.mycardTurmas {
+    align-items: center;
+    text-align: center;
+}
+/* .mynav li {
+    background: rgb(233, 166, 166);
+    list-style: none;
+} */
+
+/*CONFIGURAÇÃO DO ALBUM DE FOTOS*/
+.mycardTurmas{
+    background: #ffffff;
+    color: #ffffff;
+    list-style: none;
+    padding: 5px;
+    margin: 0px auto;
+}
+.mycardTurmas li{
+    display: inline-block;
+    background-color: rgb(53, 58, 30);
+    width: 100px;
+    height: 180px;
+    border: 5px solid #ffffff;
+    margin: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0,.3);
+    -webkit-transition: all .4s ease-in; 
+}
+.mycardTurmas li:hover{
+    -webkit-transform: scale(1.5) ;
+}
+.mycardTurmas li span{
+    opacity: 0;
+    color: #ffffff;
+    font-size: 10pt;
+    text-shadow: 1px 1px 1px #8a7b7b;
+}
+.mycardTurmas li span:hover {
+    opacity: 1;
+}
+
+.fotoAluno {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0,.3);
+
+}
+
+.fotoF {
+    position: relative;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0,.3);
+
+}
+.foto-resultados {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0,.3);
+    margin-left: 0rem;
+
+}
+
+.border-r {
+    border-left: 1px #8a7b7b solid;
+}
+.border-l {
+    border-right: 1px #8a7b7b solid;
+}
+.menu a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.menu {
+    height: 22rem;
+    background-color: #ddd;
+}
+
+.menu-item{
+    display: inline-block;
+    border: 1px solid #ffffff;
+    margin: 5px;
+    width: 100%;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0,.3);
+    -webkit-transition: all .2s ease-in; 
+}
+
+.menu-item:hover {
+    -webkit-transform: scale(1.1) ;
+}
+.menu-item2{
+    display: inline-block;
+    border: 1px solid #ffffff;
+    -webkit-transition: all .2s ease-in; 
+}
+.menu-item2 a {
+    text-decoration: none;
+}
+
+.menu-item2:hover {
+    -webkit-transform: scale(1.1) ;
+}
+.menu-item3{
+    display: inline-block;
+    border: 1px solid #ffffff;
+    -webkit-transition: all .2s ease-in; 
+    background-color: antiquewhite !important;
+}
+.menu-item3 a {
+    text-decoration: none;
+}
+
+.menu-item3:hover {
+    -webkit-transform: scale(1.1) ;
+}
+
+.bg-verdAlf {
+    background-color: rgba(30, 159, 7, 0.581);
+}
+
+.bg-laranja {
+    background-color: rgb(170, 116, 16);
+}
+.bg-laranja:hover {
+    background-color: rgb(198, 130, 4);
+}
+
+.bg-config {
+    background-color: rgb(84, 22, 10);
+}
+
+.italic {
+    font-style: inherit;
+}
+
+.mybg-secondary{
+    background-color: #ddd;
+}
+.mybg-secondary2{
+    background-color: #dddddd3c;
+}
+.mybg-warning{
+    background-color: rgb(222, 198, 163);
+}
+.mybg-danger{
+    background-color: rgb(255, 103, 103);
+}
+.mybtn-primary{
+    background-color: rgb(125, 157, 147);
+    color: azure
+}
+.mybtn-primary:hover{
+    background-color: rgb(80, 117, 105);
+    color: azure
+}
+.mytext-secondary {
+    color: rgba(0, 0, 0, .6);
+}
+.text-sm {
+    font-size: small;
+}
+.mycolor-1 {
+    background-color: rgba(91, 154, 134, 0.681);
+}
+.apagarAluno {
+    height: 40rem;
+}
+
+.mybtn2-danger {
+    background-color: rgb(252, 112, 112);
+    color: white;
+    transition: background 1s;
+    
+}
+.mybtn2-danger:hover{
+    background-color: rgb(111, 31, 31) !important;
+    color: white;
+}
+.mybtn-secondary :hover{
+    background-color: rgb(100, 79, 52) !important;
+}
+.myCard-Disc {
+    display: inline-flex;
+    border: 1px solid #8a7b7b;
+    -webkit-transition: all .2s ease-in; 
+}
+.myCard-Disc:hover{
+    -webkit-transform: scale(1.5) ;
+    background-color: aquamarine;
+    
+}
+.myAlert {
+    color: rgb(189, 7, 7);
+    font-weight: (176, 22, 22);
+}
+.myAlert a {
+   background-color: rgb(234, 87, 87);
+}
+
+.myText-primary {
+    color: rgb(1, 1, 80);
+}
+
+.servidor {
+    width: 20%;
+}
+
+.myText-primary2 {
+    color: rgb(13, 99, 121);
+}
+
+.myBg-secondary {
+    background-color: rgb(205, 221, 221) !important;
+}
+
+.mybg-info2 {
+    background-color: rgb(80, 206, 241) !important;
+}
+
+.sizeInp-2 {
+    background-color: antiquewhite;
+    width: 2rem;
+    text-align: center;
+}
+.sizeInp-3 {
+    background-color: antiquewhite;
+    width: 5rem;
+    text-align: center;
+    color: black !important;
+    padding: 0;
+}
+
+.vermelhoVerde{
+    background-color: rgba(127, 255, 212, 0.42);
+    color: red;
+}
+
+.mybg-primary {
+    background-color: rgb(153, 244, 244) !important;
+}
+
+.mybg-dark {
+    background-color: rgba(0, 0, 0, 0.048) !important;
+}
+
+.mybg-secondary {
+    background-color: #8a7b7b2f !important;
+}
+
+.mybg-light {
+    background-color: #ffffff !important;
+}
+
+.lg-input-10 {
+    width: 4rem !important;
+    background-color: antiquewhite;
+    text-align: center;
+}
+.lg-input-12 {
+    width: 5rem !important;
+    background-color: antiquewhite;
+    text-align: center;
+}
+
+.lg-input-50 {
+    width: 20rem !important;
+}

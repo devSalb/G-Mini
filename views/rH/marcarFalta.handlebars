@@ -1,0 +1,24 @@
+<div class="container my-5">
+    <div class="col-6 offset-3 card card-body p-3">
+        <div class="h3 text-center text-danger fw-bold">Marcação de Falta</div>
+        <hr>
+        <form action="/rH/marcarFaltaSave" method="post">
+        <div class="text-center lead mark"> {{funcionario.nome}} </div>
+
+        <div class="col-6 offset-3 text-center mt-3">
+
+        <label for="faltas">Nº faltas</label>
+        <input type="number" name="faltas" id="faltas" min="1" class="form-control" required>
+        <input type="hidden" name="mes" value="{{mes}}">
+        <input type="hidden" name="funcionario" value="{{funcionario._id}}">
+        </div>
+        <hr>
+
+        <div class="modal-footer text-center mt-3">
+                    <a type="button" href="/rh/tdFormadores" class="btn btn-secondary btn-sm mx-2" data-bs-dismiss="modal">Cancelar</a>
+                    <button type="submit" class="btn btn-sm btn-danger">Continuar</button>
+        </div>
+
+        </form>
+    </div>
+</div>

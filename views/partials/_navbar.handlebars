@@ -1,0 +1,324 @@
+<nav class="navbar navbar-expand-lg navbar-dark text-light bg-dark">
+  <a class="navbar-brand text-light ms-2" href="/">G-MINI</a>
+  <button class="navbar-toggler text-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link text-light" href="/usuario/perfil">Início </a>
+      </li>
+      <li class="nav-item">
+        {{!-- <a class="nav-link text-light" href="/pedagogico/cursosPublic" tabindex="-1" aria-disabled="true">Cursos</a> --}}
+      </li>
+      
+      {{#if user.eAdmin}}
+      {{!-- <li class="nav-item active">
+        <a class="nav-link text-light" href="/anosLectivo">Módulos</a>
+      </li> --}}
+      <li class="nav-item active">
+        {{!-- <a class="nav-link text-light" href="#">Acções </a> --}}
+        {{!-- <a class="nav-link text-light" href="/candidatos">Candidatos </a> --}}
+      </li>
+      <li class="nav-item active">
+        {{!-- <a class="nav-link text-light" href="#">Utilizadore </a> --}}
+       {{!--  <a class="nav-link text-light" href="#">Relatórios </a> --}}
+        {{!-- <a class="nav-link text-light" href="/definicoes">Definições </a> --}}
+      </li>
+
+      {{else}}
+      {{/if}}
+      <li class="nav-item active">
+        {{!-- <a class="nav-link text-light" href="#" onclick="consultC()">Consultar candidatura </a> --}}
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-link text-light" href="#" onclick="regulamento()">Termos e Políticas </a>
+      </li>
+
+
+
+    </ul>
+
+  </div>
+  {{#if user}}
+  {{else}}
+  <a href="#" onclick="criarConta()" class=" text-light nav-link me-5">Criar conta</a>
+  {{/if}}
+  {{#if user}}
+  <a href="/usuario/perfilUser" class="btn me-2 text-light">Perfil</a>
+  {{else}}
+  {{/if}}
+  {{#if user}}
+  <a class="nav-link text-secondary me-3" href="/usuario/logout">Sair</a>
+  {{else}}
+  <a class="nav-link text-light text-secondary me-3" href="/usuario/login" tabindex="-1">Login</a>
+
+  {{/if}}
+</nav>
+
+
+<!-- Modal -->
+
+<div class="modal" tabindex="-1" data-bs-backdrop="static" id="minha">
+  <div class="modal-dialog modal-dialog-centered">
+    <form action="/formando/consultar" method="post">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Consultar candidatura</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body input-box-filtro">
+          <input type="text" name="numBI" placeholder="Digite o seu número do Bilhete de identidade" class="text-center form-control" required>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Feichar</button>
+          <a href="#" onclick="mostrar2()"><button type="submit" class="btn btn-primary">Consultar</button></a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal Regulamento Interno-->
+
+<div class="modal modal-xl" tabindex="-1" data-bs-backdrop="static" id="regulamento">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="h2 text-center fw-bold">
+          TERMOS E POLÍTICAS
+        </div>
+        <hr>
+
+        <div class="accordion regulamento" id="accordionExample">
+
+          {{!-- CAPÍTULO I – DISPOSIÇÕES GERAIS --}}
+          <div class="accordion-item">
+            <h2 class="accordion-header bg-secondary">
+              <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                CAPÍTULO I – DISPOSIÇÕES GERAIS
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <div class="display-6">Em actualização...</div>
+
+              </div>
+            </div>
+          </div>
+
+          {{!-- CAPÍTULO II – DOS DEVERES E DIREITOS --}}
+          <div class="accordion-item">
+            <h2 class="accordion-header bg-secondary">
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                CAPÍTULO II – DOS DEVERES E DIREITOS
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <div class="display-6">Em actualização...</div>
+
+                {{!-- <div class="fw-bold">Seção I – Dos Formandos</div>
+                <p><span class="fw-bold">Artigo 3.º </span> – <i>Direitos dos Formandos</i></p>
+                <p class="ms-5">1. Receber formação de qualidade com base nos conteúdos programáticos definidos.</p>
+                <p class="ms-5">2. Ser tratado com respeito e dignidade.</p>
+                <p class="ms-5">3. Utilizar os espaços e equipamentos do pavilhão com fins pedagógicos.</p>
+                <p class="ms-5">4. Participar de atividades culturais e pedagógicas promovidas pela instituição.</p>
+
+                <p><span class="fw-bold">Artigo 4.º </span> – <i>Deveres dos Formandos</i></p>
+                <p class="ms-5">1. Comparecer pontualmente às aulas e atividades programadas.</p>
+                <p class="ms-5">2. Respeitar os colegas, formadores e demais profissionais.</p>
+                <p class="ms-5">3. Conservar os materiais e instalações do pavilhão.</p>
+                <p class="ms-5">4. Vestir-se de forma adequada ao ambiente educacional.</p>
+                <p class="ms-5">5. Não portar objetos perigosos ou substâncias ilícitas.</p>
+
+                <div class="fw-bold">Seção II – Dos Formadores e Funcionários</div>
+                <p><span class="fw-bold">Artigo 5.º </span> – <i>Deveres dos Formadores</i></p>
+                <p class="ms-5">1. Preparar e ministrar as aulas com responsabilidade e profissionalismo.</p>
+                <p class="ms-5">2. Avaliar os formandos de forma justa e transparente.</p>
+                <p class="ms-5">3. Manter o bom ambiente na sala de aula.</p>
+                <p class="ms-5">4. Zelar pela disciplina e orientar os formandos.</p>
+
+                <p><span class="fw-bold">Artigo 6.º </span> – <i>Deveres da Equipa Administrativa e Técnica</i></p>
+                <p class="ms-5">1. Cumprir as suas funções com competência e dedicação.</p>
+                <p class="ms-5">2. Prestar apoio às atividades de formação.</p>
+                <p class="ms-5">3. Garantir a conservação e a segurança do espaço físico.</p>
+ --}}
+
+              </div>
+            </div>
+          </div>
+
+          {{!-- CAPÍTULO III – DA ORGANIZAÇÃO PEDAGÓGICA --}}
+          <div class="accordion-item">
+            <h2 class="accordion-header bg-secondary">
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseTree" aria-expanded="true" aria-controls="collapseTree">
+                CAPÍTULO III – POLÍTICAS DE PAGAMENTO
+              </button>
+            </h2>
+            <div id="collapseTree" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <p><span class="fw-bold">Artigo 7.º </span> – <i>Assinatura Semestral</i></p>
+                <p class="ms-5">Cada conta terá a duração de 6 meses de trabalho, depois da renovação da assinatura.</p>
+
+                <p><span class="fw-bold">Artigo 8.º </span> – <i>Investimento</i></p>
+                <p class="ms-5"> O proprietário da conta pagará 1.000,00 (mil kuanzas) por cada assinatura que terá a duração de 6 meses. A abertura da conta é gratis com a garantia de uma assinatura (6 meses gratis).</p>
+
+                <div class="display-6">Em actualização...</div>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+
+
+          {{!-- CAPÍTULO IV – DA DISCIPLINA E SANÇÕES --}}
+
+          <div class="accordion-item">
+            <h2 class="accordion-header bg-secondary">
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseFor" aria-expanded="true" aria-controls="collapseFor">
+                CAPÍTULO IV – DA DISCIPLINA E SANÇÕES
+              </button>
+            </h2>
+            <div id="collapseFor" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <div class="display-6">Em actualização...</div>
+
+               {{!--  <p><span class="fw-bold">Artigo 9.º </span> – <i>Infrações Disciplinares</i></p>
+                <p class="ms-5">Constituem infrações:</p>
+                <p class="ms-5">• Agressões físicas ou verbais.</p>
+                <p class="ms-5">• Desrespeito às normas do pavilhão.</p>
+                <p class="ms-5">• Danificação de bens materiais.</p>
+                <p class="ms-5">• Faltas injustificadas em excesso.</p>
+
+                <p><span class="fw-bold">Artigo 10.º </span> – <i>Sanções Disciplinares</i></p>
+                <p class="ms-5">Dependendo da gravidade, as sanções podem incluir:</p>
+                <p class="ms-5">1. Advertência verbal.</p>
+                <p class="ms-5">2. Advertência escrita.</p>
+                <p class="ms-5">3. Suspensão temporária.</p>
+                <p class="ms-5">4. Expulsão do curso.</p> --}}
+              </div>
+            </div>
+          </div>
+
+          {{!-- CAPÍTULO V – DISPOSIÇÕES FINAIS --}}
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                CAPÍTULO V – DISPOSIÇÕES FINAIS
+              </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <p><span class="fw-bold">Artigo 11.º </span> – <i>Casos Omissos</i></p>
+                <p class="ms-5">Os casos omissos neste regulamento serão resolvidos pela coordenação do pavilhão em
+                  conjunto com os órgãos competentes.</p>
+
+                <p><span class="fw-bold">Artigo 12.º </span> – <i>Entrada em Vigor</i></p>
+                <p class="ms-5">Este regulamento entra em vigor a partir da data de sua aprovação e divulgação oficial.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Feichar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal cadastrarse-->
+
+<div class="modal" tabindex="-1" data-bs-backdrop="static" id="criarConta">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title text-primary">Registo de Conta</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/rh/adFuncionario" method="post" class="p-3">
+
+        <div class=" text-center">
+
+          <label for="nome">Nome</label>
+          <input name="nome" id="formandoNoCentro" class="form-control text-center mt-2" required>
+
+          <label for="emai">E-Mail</label>
+          <input type="email" name="email" class="form-control" required>
+
+          <label for="telefone">Telefone</label>
+          <input type="text" name="telefone" placeholder="Opcional" class="form-control text-end">
+
+          <label for="senha">Senha</label>
+          <input type="password" name="senha" id="senha1" class="form-control" required>
+          
+          <label for="senha2">Confirma a senha</label>
+          <input type="password" name="senha2" onclick="aviso()" id="senha2" class="form-control" required>
+          {{!-- <label for="aviso" id="aviso">....</label> --}}
+
+          <input type="hidden" name="categoria" value="Professor">
+          <input type="hidden" name="cliente" value="cliente">
+
+        </div>
+
+        <div class=" text-center mt-3">
+          <input type="hidden" name="formandoNoCentro" value="não">
+          <button type="submit" class="btn btn-sm btn-primary form-control">Continuar</button>
+          <button type="button" class="btn btn-secondary btn-sm mt-2 form-control"
+            data-bs-dismiss="modal">Cancelar</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<script src="assets/bootstrap.bundle.min.js" class="img-fluid"></script>
+<script>
+  function criarConta() {
+    let el = document.getElementById('criarConta');
+    let minha_modal = new bootstrap.Modal(el);
+    minha_modal.show();
+  }
+  
+  function consultC() {
+
+    let el = document.getElementById('minha');
+    let minha_modal = new bootstrap.Modal(el);
+    minha_modal.show();
+  }
+
+  function regulamento() {
+    let el = document.getElementById('regulamento');
+    let minha_modal = new bootstrap.Modal(el);
+    minha_modal.show();
+  }
+  function aviso() {
+    //let senha1 = document.getElementById('senha1').innerText;
+    //let el = document.getElementById('aviso').innerHTML = senha1;
+    
+  }
+
+</script>

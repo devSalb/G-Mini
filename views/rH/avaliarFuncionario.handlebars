@@ -1,0 +1,64 @@
+<div class="container mt-5">
+    <div class="col-6 offset-3 card p-3 card-body">
+        <form action="/rH/avaliarFuncionarioSave" method="post">
+            <h3 class="text-primary text-center">Avaliação de Desempenho</h3>
+            <hr>
+            <div class="lead text-center mark fw-bold"> {{funcionario.nome}} </div>
+
+            <div class="row mt-3">
+                <div class="col-6">
+                    <label for="clasificacao">Classificação</label>
+                    <select name="clasificacao" id="clasificacao" class="form-control" required>
+                        <option value="">Selecionar</option>
+                        <option value="Bom">Bom</option>
+                        <option value="M. Bom">M. Bom</option>
+                        <option value="Excelente">Excelente</option>
+                        <option value="Mau">Mau</option>
+                    </select>
+                </div>
+
+                <div class="col-6">
+                    <label for="suplemento">Suplemento</label>
+                    <select name="suplemento" id="suplemento" class="form-control" required>
+                        <option value="">Selecionar</option>
+                        <option value="SIM">SIM</option>
+                        <option value="NÃO">NÃO</option>
+                    </select>
+                </div>
+            </div>
+
+            {{!-- Faltas justificadas e injustificadas --}}
+            {{!-- As faltas virão da efetividade, o que implicará que só será possível avaliar depois de gerar a
+            efetividade --}}
+            <div class="row mt-3">
+                <div class="col-6">
+                    <label for="faltasjustificadas">Faltas Justificadas</label>
+                    <input type="number" name="faltasjustificadasfake" id="faltasjustificadas"
+                        value="{{faltasjustificadas}}" class="form-control" disabled>
+                    <input type="hidden" name="faltasjustificadas" id="faltasjustificadas"
+                        value="{{faltasjustificadas}}" class="form-control">
+                </div>
+
+                <div class="col-6">
+                    <label for="faltasInjustificadas">Faltas Injustificadas</label>
+                    <input type="number" name="faltasInjustificadasFake" id="faltasInjustificadas"
+                        value="{{faltasInjustificadas}}" class="form-control" disabled>
+                    <input type="hidden" name="faltasInjustificadas" id="faltasInjustificadas"
+                        value="{{faltasInjustificadas}}" class="form-control">
+                </div>
+            </div>
+
+            <label for="observacao">Observação</label>
+            <input type="text" name="observacao" id="observacao" class="form-control">
+
+            <div class="modal-footer text-center mt-3">
+                <input type="hidden" name="funcionario" value="{{funcionario._id}}">
+                <input type="hidden" name="mes" value="{{mes}}">
+                <a href="/rH/avaliacoes" class="btn btn-secondary btn-sm mx-2" >Cancelar</a>
+                <button type="submit" class="btn btn-sm btn-primary">Continual</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>

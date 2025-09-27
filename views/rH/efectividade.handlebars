@@ -1,0 +1,53 @@
+<div class="display-6 text-center mark">Mapa de Efectividade dos Funcionários referente a {{efectividade.mes}} </div>
+<hr>
+<table class="table table-sm table-bordered">
+    <thead class="text-center">
+        <tr>
+            <td rowspan="2">N/O</td>
+            <td rowspan="2">Nome</td>
+            <td rowspan="2">Categoria</td>
+            <td rowspan="2">F. Justificadas</td>
+            <td rowspan="2">F. Injustificadas</td>
+            <td colspan="7" class="lead bg-light">Licenças</td>
+            <td rowspan="2">Total de Falta a Descontar</td>
+        </tr>
+        <tr class="text-sm">
+            <td>Por doença</td>
+            <td>Parental</td>
+            <td>Casamento</td>
+            <td>Luto</td>
+            <td>Disciplinar</td>
+            <td>Limitada</td>
+            <td>Ilimitada</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        {{#each efectividade.funcionarios}}
+        <tr>
+            <td>n</td>
+            <td> {{nome}} </td>
+            <td> {{categoria}} </td>
+            <td class="text-center"> {{faltasJustificadas}} </td>
+            <td class="text-center"> {{faltasInjustificadas}} </td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+        </tr>
+        {{else}}
+        {{/each}}
+    </tbody>
+
+</table>
+<div class="text-center modal-footer">
+    <form action="/rH/efectividadePDF" method="post">
+    <input type="hidden" name="idEfectividade" value="{{efectividade._id}}">
+    <button type="submit" class="btn btn-sm btn-secondary">Gerar PDF</button>
+    <a href="/rH/eliminarEfectividade/{{efectividade._id}}" class="btn btn-sm btn-danger">Eliminar Mapa</a>
+    </form>
+</div>

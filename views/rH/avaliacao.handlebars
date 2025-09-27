@@ -1,0 +1,113 @@
+<div class="display-6">Avaliação de Desempenho referende ao mês de {{mes}} </div>
+<hr>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>N/O</td>
+            <td>Nome</td>
+            <td>Classificação</td>
+            <td>Direito a Suplemento</td>
+            <td>Faltas Injustificadas</td>
+            <td>Faltas Justificadas</td>
+            <td>Observação</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        {{#each funcionarios}}
+        <tr>
+            <td class="text-center"> {{numOrdem}} </td>
+            <td> {{nome}} </td>
+            {{#if avaliacao}}
+            <td class="text-center"> {{avaliacao.clasificacao}} </td>
+            <td class="text-center"> {{avaliacao.suplemento}} </td>
+            <td class="text-center"> {{avaliacao.faltasInjustificadas}} </td>
+            <td class="text-center"> {{avaliacao.faltasjustificadas}} </td>
+            <td class="text-center"> {{avaliacao.observacao}} </td>
+            {{else}}
+            {{#if femenino}}
+            <form action="/rH/avaliarFuncionario" method="post">
+            <input type="hidden" name="idFuncionario" value="{{_id}}" id="">
+            <input type="hidden" name="mes" value="{{mes}}" id="">
+                <td colspan="5" class="">Ainda não foi avaliada <button type="submit" class="btn btn-sm btn-warning ">Avaliar agora!</button></td>
+            </form> {{else}}
+            <form action="/rH/avaliarFuncionario" method="post">
+            <input type="hidden" name="idFuncionario" value="{{_id}}" id="">
+            <input type="hidden" name="mes" value="{{mes}}" id="">
+                <td colspan="5" class="">Ainda não foi avaliado <button type="submit" class="btn btn-sm btn-warning ">Avaliar agora!</button></td>
+            </form>
+            {{/if}}
+            {{/if}}
+        </tr>
+        {{else}}
+        <tr>Não ha funcionarios cadastrados</tr>
+        {{/each}}
+    </tbody>
+</table>
+
+
+
+<!-- Modal Avaliar Funcionário-->
+
+<div class="modal" tabindex="-1" data-bs-backdrop="static" id="avaliar">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-primary">Avaliar Fubcionário</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/rH/avaliarFuncionario" method="post" class="p-3">
+
+                <div class="row">
+                    <div class="col-6">
+                        <label for="codigo">Código</label>
+                        <input type="text" name="codigo" id="codigo" class="form-control" required>
+                    </div>
+                    <div class="col-6">
+                        <label for="nomeModulo">Nome do Modulo</label>
+                        <input type="text" name="nomeModulo" id="nomeModulo" class="form-control" required>
+                    </div>
+
+
+
+                    {{!-- tempo --}}
+                    <div class="col-4 offset-4">
+
+                        <label for="tempoSemanal" class="mt-2">Tempo Semanal</label>
+                        <input type="number" name="tempoSemanal" id="tempoSemanal" value="" required
+                            class="form-control">
+                    </div>
+                </div>
+
+                <div class="modal-footer text-center mt-3">
+                    <input type="hidden" name="idCurso" value="{{curso._id}}">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Adicionar</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<script src="assets/bootstrap.bundle.min.js" class="img-fluid"></script>
+<script>
+    function avaliar() {
+
+        let el = document.getElementById('avaliar');
+        let minha_modal = new bootstrap.Modal(el);
+        minha_modal.show();
+    }
+
+    function adModulo() {
+
+        let el = document.getElementById('adModulo');
+        let minha_modal = new bootstrap.Modal(el);
+        minha_modal.show();
+    }
+
+
+
+
+</script>

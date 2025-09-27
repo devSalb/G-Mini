@@ -1,0 +1,93 @@
+<div class="container">
+    <div class="row h3">
+        <div class="col-10 text-primary">
+            {{curso.nomeCurso}}
+        </div>
+        <div class="col-2 text-center fw-bold text-secondary mark">Formandos</div>
+    </div>
+    <hr>
+
+    <table class="table table-bordered">
+        <thead class="text-center fw-bold bg-secondary text-light">
+            <tr>
+                <td>N/O</td>
+                <td>Nome Completo</td>
+                <td>Idade</td>
+                <td>Observação</td>
+            </tr>
+        </thead>
+
+        <body>
+            {{#each formandos}}
+            <tr>
+                <td class="text-center"> {{numOrdem}} </td>
+                <td> {{nome}} </td>
+                <td class="text-center"> {{idade}} anos</td>
+                <td class="text-center">
+                    {{#if admitido}}
+                    {{estado}}
+                    {{else}}
+
+                    <div class="row ">
+                        <div class="col-2">
+                            <form action="/pedagogico/admitir" method="post">
+                                <input type="hidden" name="idFormando" value="{{_id}}">
+                                <input type="hidden" name="idCurso" value="{{idCurso}}">
+                                <input type="hidden" name="admitido" value="Sim">
+                                <button class="btn btn-sm btn-primary">Admitir</button>
+                            </form>
+                        </div>
+                        <div class="col-2">
+                            <form action="/pedagogico/admitir" method="post">
+                                <input type="hidden" name="idCurso" value="{{idCurso}}">
+                                <input type="hidden" name="idFormando" value="{{_id}}">
+                                <input type="hidden" name="admitido" value="Não">
+                                <button class="btn btn-sm btn-danger">N/Admitir</button>
+                            </form>
+                        </div>
+                        
+                            {{/if}}
+
+                    </div>
+
+                </td>
+                <td>
+                    <div class="col-2 text-primary text-center">
+                            <a href="/formando/ficha/{{usuario}}" class="nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-eye" viewBox="0 0 16 16">
+                                    <path
+                                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+                                    <path
+                                        d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
+                                </svg>
+                            </a>
+                        </div>
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="3" class="text-center">Não ha Formando matriculado neste Curso</td>
+            </tr>
+            {{/each}}
+        </body>
+    </table>
+    <div class="text-center">
+
+        <a href="/pedagogico/curso/{{curso._id}}" class="btn btn-sm btn-secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+</svg> Voltar
+        </a>
+
+        <a href="/pedagogico/listaCursoPDF/{{curso._id}}" class="btn btn-sm btn-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download"
+                viewBox="0 0 16 16">
+                <path
+                    d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
+                <path
+                    d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z" />
+            </svg> &shy; Baixar Lista PDF
+        </a>
+    </div>
+</div>

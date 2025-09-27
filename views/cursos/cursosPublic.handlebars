@@ -1,0 +1,120 @@
+<div class="container bg-primary text-light p-3">
+    {{#each cursos}}
+    <div class="display-5 mark text-dark"> {{nomeCurso}} </div>
+
+    <div class="row ">
+
+        <div class="col-6 mt-2">
+            <div class="card-body mx-0">
+                <img src="/img/{{imagem}}" class="fotoAluno" alt="">
+            </div>
+        </div>
+        <div class="col-6 bg-primary text-light p-4">
+            {{#if informatica}}
+            <div class="h2">Seu Futuro Começa Aqui!</div>
+            <div class="mt-2 lead">
+                Você sonha em dominar a tecnologia e construir uma carreira de sucesso? Então este curso é pra você!
+            </div>
+            <p>
+                <span class="fw-bold"> Aprenda na prática:</span> Do básico ao avançado, com professores experientes e
+                laboratórios equipados.
+            </p>
+
+            <p>
+                <span class="fw-bold"> Conquiste o mercado: </span> Prepare-se para oportunidades em empresas, escolas,
+                startups e muito mais.
+            </p>
+            <p>
+                <span class="fw-bold"> Ganhe autonomia digital! </span>
+            </p>
+            <p>
+                <span class="fw-bold">Certificação reconhecida: </span>Um diferencial no seu currículo!
+            </p>
+            <p>
+
+                🌟 Não é só um curso, é uma porta para o futuro!
+            </p>
+            Inscreva-se já e transforme seu conhecimento em oportunidades reais. <br>
+            📍 Vagas limitadas <a href="#" onclick="cadastrarse()" class="text-warning">Clique aqui para se increver</a>
+
+            {{else}}
+            {{/if}}
+        </div>
+    </div>
+    <hr>
+
+    {{else}}
+
+    <div class="text-center lead">Nenhum curso disponivel</div>
+    {{/each}}
+</div>
+
+
+
+
+
+
+
+{{!-- MODAIS --}}
+
+<!-- Modal cadastrarse-->
+
+<div class="modal" tabindex="-1" data-bs-backdrop="static" id="cadastrarse">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-primary">Registo de Conta</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/usuario/cadastrarse" method="post" class="p-3">
+
+                <div class=" text-center">
+
+                    <label for="formandoNoCentro">Confirma o Curso que pretende</label>
+                    <select name="idCurso" id="formandoNoCentro" class="form-control text-center mt-2" required>
+                        <option value="">Selecionar</option>
+                        {{#each cursos}}
+                        {{#if disponivel}}
+                        <option value="{{_id}}"> {{nomeCurso}} </option>
+                        {{else}}
+                        {{/if}}
+                        {{else}}
+                        <option value="">Sem Curso caastrado</option>
+                        {{/each}}
+                    </select>
+
+                </div>
+
+                <div class=" text-center mt-3">
+                    <input type="hidden" name="formandoNoCentro" value="não">
+                    <button type="submit" class="btn btn-sm btn-primary form-control">Continuar</button>
+                    <button type="button" class="btn btn-secondary btn-sm mt-2 form-control"
+                        data-bs-dismiss="modal">Cancelar</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<script src="assets/bootstrap.bundle.min.js" class="img-fluid"></script>
+<script>
+    function cadastrarse() {
+
+        let el = document.getElementById('cadastrarse');
+        let minha_modal = new bootstrap.Modal(el);
+        minha_modal.show();
+    }
+
+    function adModulo() {
+
+        let el = document.getElementById('adModulo');
+        let minha_modal = new bootstrap.Modal(el);
+        minha_modal.show();
+    }
+
+
+
+
+</script>

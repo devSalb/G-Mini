@@ -1,0 +1,69 @@
+
+.mycard-pautas {
+    align-items: center;
+    text-align: center;
+    background-color: darkblue;
+}
+.mynav li {
+    background: rgb(233, 166, 166);
+    list-style: none;
+}
+
+/*CONFIGURAÇÃO DO ALBUM DE FOTOS*/
+.mycard-pautas{
+    background: #ffffff;
+    list-style: none;
+    padding: 10px;
+    margin: 0px auto;
+}
+.mycard-pautas li{
+    display: inline-block;
+    background-color: aqua;
+    width: 250px;
+    height: 300px;
+    border: 5px solid #ffffff;
+    margin: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0,.3);
+    -webkit-transition: all .4s ease-in; 
+}
+.mycard-pautas li:hover{
+    -webkit-transform: scale(1.5) ;
+}
+.mycard li span{
+    opacity: 0;
+    color: #ffffff;
+    font-size: 10pt;
+    text-shadow: 1px 1px 1px #8a7b7b;
+}
+.mycard li span:hover {
+    opacity: 1;
+}
+
+.mycard-avaliacoes{
+    background: #ffffff;
+    list-style: none;
+    padding: 10px;
+    margin: 0px auto;
+}
+
+.mycard-avaliacoes li{
+    display: inline-block;
+    background-color: rgb(116, 160, 160);
+    width: 150px;
+    height: 200px;
+    border: 5px solid #ffffff;
+    margin: 15px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0,.3);
+    -webkit-transition: all .4s ease-in; 
+}
+
+.mycard-avaliacoes li:hover{
+    -webkit-transform: scale(1.5) ;
+}
+
+.pesquisa input{
+    border-radius: 2rem;
+    width: 20rem;
+    padding: 0.3rem;
+}
+

@@ -1,0 +1,93 @@
+<div class="row">
+<div class="col-8 display-6 text-primary">Efectividaes</div>
+<div class="col-4 text-end"><button class="btn btn-sm btn-primary" onclick="gerarEfectividade()">Gerar Efectividade</button></div>
+
+</div>
+<hr>
+
+<div class="container text-center mynav">
+    <ul class="mycard-avaliacoes">
+        {{#each efectividades}}
+        <li class="text-center p-2 pt-4 mybg-secondary">
+            <div class="lead "> {{mes}} </div>
+            <hr class=" m-1">
+            <span class=" lead text-warning mt-3">Mapa de Efectividade </span><br>
+            <form action="/rH/efectividade" method="post" class="">
+                <input type="hidden" name="idEfectividade" value="{{_id}}">
+                <button type="submit" class="btn btn-sm btn-light mt-3">Ver Mapa</button>
+            </form>
+        </li>
+        {{else}}
+        <div class="text-center lead">Não ha nenhuma efectividade gerada</div>
+        {{/each}}
+
+    </ul>
+</div>
+
+
+
+
+
+
+<!-- Modal Gerar Efectividade-->
+
+<div class="modal" tabindex="-1" data-bs-backdrop="static" id="gerarEfectividade">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-center text-primary">Gerar Efectividade</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/rH/gerarEfectividade" method="post" class="p-3">
+
+                <div class="col-10 offset-1 text-center">
+                    <label for="mes">Seleciona o Mês</label>
+                    <select name="mes" id="mes" class="form-control" required>
+                        <option value="">Selecionar</option>
+                        <option value="janeiro">Janeiro</option>
+                        <option value="fevereiro">Fevereiro</option>
+                        <option value="março">Março</option>
+                        <option value="abril">Abril</option>
+                        <option value="maio">Maio</option>
+                        <option value="junho">Junho</option>
+                        <option value="julho">Julho</option>
+                        <option value="agosto">Agosto</option>
+                        <option value="setembro">Setembro</option>
+                        <option value="outubro">Outubro</option>
+                        <option value="novembro">Novembro</option>
+                        <option value="dezembro">Dezembro</option>
+                    </select>
+                </div>
+                    
+
+                <div class="modal-footer text-center mt-3">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Gerar</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<script src="assets/bootstrap.bundle.min.js" class="img-fluid"></script>
+<script>
+    function gerarEfectividade() {
+
+        let el = document.getElementById('gerarEfectividade');
+        let minha_modal = new bootstrap.Modal(el);
+        minha_modal.show();
+    }
+
+    function adModulo() {
+
+        let el = document.getElementById('adModulo');
+        let minha_modal = new bootstrap.Modal(el);
+        minha_modal.show();
+    }
+
+
+
+
+</script>

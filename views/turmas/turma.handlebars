@@ -1,0 +1,179 @@
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+            <p>Curso: <span class="text-secondary fw-bold">{{curso.nomeCurso}}</span> </p>
+            <p>Turma: <span class="text-secondary fw-bold">{{turma.nomeTurma}}</span> </p>
+            <div class="row">
+                <div class="col-6">
+                    <p>Data início: {{dataInicio}} </p>
+                </div>
+                <div class="col-6">
+                    <p>Data termino: {{dataFim}} </p>
+                </div>
+            </div>
+        </div>
+        {{#if autorizado}}
+        <div class="col-2 text-end">
+            <a href="#" onclick="novaMatricula()" class="btn btn-sm btn-primary">
+                Matricular Novo
+            </a><br>
+            <button onclick="adFormadorTurma()" class="btn btn-sm btn-primary mt-2">+ Formador</button>
+        </div>
+        {{else}} {{/if}}
+    </div>
+    <hr>
+    <table class="table">
+        <thead class="fw-bold bg-secondary text-light">
+            <tr>
+                <td class="text-center">N/O</td>
+                <td class="text-center">Nome do Formando</td>
+                <td class="text-center">Nº Bilhete</td>
+                <td class="text-center">Genero</td>
+                <td class="text-center">Idade</td>
+                <td class="text-center"></td>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each formandos}}
+            <tr>
+                <td class="text-center"> {{numOrd}} </td>
+                <td> {{nome}}</td>
+                <td> {{numBI}} </td>
+                <td class="text-center"> {{genero}} </td>
+                <td class="text-center"> {{Idade}} </td>
+                <td></td>
+            </tr>
+            {{else}}
+            <tr>
+            <td colspan="4" class="text-center">Não ha Formando matriculado nesta Turma</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <div class="mt-2">
+        <a href="/pedagogico/curso/{{turma.idCurso}}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+</svg> Voltar
+        </a>
+    </div>
+</div>
+
+
+
+<!-- Modal Nova Matricula-->
+
+<div class="modal modal-xl" tabindex="-1" data-bs-backdrop="static" id="novaMatricula">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-primary">Nova Matricula</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="p-3">
+                <table class="table table-sm">
+                    <thead class="bg-light fw-bold">
+                        <td>N/O</td>
+                        <td>Nome Completo</td>
+                        <td>Nº Bilhete</td>
+                        <td>Idade</td>
+                    </thead>
+                    <tbody>
+                        {{#each formandosDoCurso}}
+                        <tr>
+                            <td> {{numOrd}} </td>
+                            <td> {{nome}} </td>
+                            <td> {{numBI}} </td>
+                            <td> {{idade}} </td>
+                            <form action="/pedagogico/matricular/" method="post">
+                                <td>
+                                    <input type="hidden" name="idFormando" value="{{_id}}">
+                                    <input type="hidden" name="idTurma" value="{{idTurma}}">
+                                    <button type="submit" class="btn btn-sm btn-success">Matricular</button>
+                                </td>
+                            </form>
+                        </tr>
+                        {{else}}
+                        <tr>
+                            <td colspan="4" class="text-center">Não ha candidatos para este Curso</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+
+                </table>
+            </div>
+
+            <div class="modal-footer text-center">
+                <input type="hidden" name="idCurso" value="{{curso._id}}">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal adFormadorTurma-->
+
+<div class="modal" tabindex="-1" data-bs-backdrop="static" id="adFormadorTurma">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-primary">Atribuir Modulo</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/pedagogico/adFormadorTurma" method="post">
+                <div class="p-3">
+                    <label for="formado">Formador</label>
+                    <select name="idFormador" id="formador" class="form-control" required>
+                        <option value="">Selecionar</option>
+                        {{#each formadores}}
+                        <option value="{{_id}}"> {{nome}} </option>
+                        {{else}}
+                        <div class="text-center">Não ha formador cadastrado</div>
+                        {{/each}}
+                    </select>
+
+                    <label for="modulo" class="mt-3">Modulo</label>
+                    <select name="nomeModulo" id="modulo" class="form-control" required>
+                        <option value="">Selecionar</option>
+                        {{#each modulos}}
+                        <option value="{{nomeModulo}}"> {{nomeModulo}} </option>
+                        {{else}}
+                        <div class="text-center">Não ha modulos neste curso</div>
+                        {{/each}}
+                    </select>
+
+                </div>
+
+                <div class="modal-footer text-center">
+                    <input type="hidden" name="idTurma" value="{{turma._id}}">
+                    <input type="hidden" name="idCurso" value="{{turma.idCurso}}">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success btn-sm">Atribuir</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="assets/bootstrap.bundle.min.js" class="img-fluid"></script>
+<script>
+    function novaMatricula() {
+
+        let el = document.getElementById('novaMatricula');
+        let minha_modal = new bootstrap.Modal(el);
+        minha_modal.show();
+    }
+    function adFormadorTurma() {
+
+        let el = document.getElementById('adFormadorTurma');
+        let minha_modal = new bootstrap.Modal(el);
+        minha_modal.show();
+    }
+
+
+
+
+</script>

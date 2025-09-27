@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="text-primary h3">Gestão de Vagas</div>
+
+    <hr>
+    <table class="table ">
+        <thead>
+            <tr class="fw-bold">
+                <td>N/O</td>
+                <td>Cursos</td>
+                <td class="text-center">inscritos</td>
+                <td class="text-center">Vagas</td>
+                <td></td>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each cursos}}
+            <tr>
+                <td> {{numOrdem}} </td>
+                <td> {{nomeCurso}} </td>
+                <td class="text-center"> {{inscritos}} </td>
+                <td class="text-center"> {{vagas}} </td>
+                <td> <a href="/pedagogico/gerirVagaCurso/{{_id}}" class=""></a> </td>
+            </tr>
+            {{else}}
+            {{/each}}
+        </tbody>
+    </table>
+
+    <div class="text-center mt-3">
+        <button onclick="gerirTodos()" class="btn btn-sm btn-primary">Gerir todos os Cursos</button>
+        <button onclick="gerirUm()" class="btn btn-sm btn-primary">Gerir Um Curso</button>
+    </div>
+</div>
+
+
+
+
+
+
+ <!-- Modal Gerir um curso-->
+
+            <form action="/pedagogico/editarVaga" method="post">
+                <div class="modal" tabindex="-1" data-bs-backdrop="static" id="gerirUm">
+                    <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title myText-primary text-center fw-bold">GERIR VAGAS DO CURSO
+                                    </h3>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body input-box text-center">
+                                    <label for="curso">Selecione o Curso:</label>
+                                    <select name="curso" required>
+                                        <option value="selecionar">Selecionar</option>
+                                        {{#each cursos}}
+                                        <option value="{{_id}}"> {{nomeCurso}} </option>
+                                        {{else}}
+                                        <option value="0">Nenhum aluno nesta turma</option>
+                                        {{/each}}
+                                    </select>
+                                    <label for="vaga">Inseri o Número de Vagas:</label>
+                                   
+                                   
+                                    <input type="number" name="vaga" min="0" placeholder="Insere a nota aqui!"
+                                        class="text-center" required>
+
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
+                                <div class="modal-footer text-center">
+                                    {{!-- <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Feichar</button>
+                                    --}}
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </form>
+
+
+            <script src="assets/bootstrap.bundle.min.js" class="img-fluid"></script>
+            <script>
+                function gerirUm() {
+
+                    let el = document.getElementById('gerirUm');
+                    let minha_modal = new bootstrap.Modal(el);
+                    minha_modal.show();
+                }
+
+
+            </script>

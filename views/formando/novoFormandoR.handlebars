@@ -1,0 +1,333 @@
+<div class="container">
+    <div class="text-primary h3">Novo Farmando</div>
+
+    {{#each mesageErr}}
+    <div class="alert alert-danger">{{texto}}</div>
+    {{else}}
+    {{/each}}
+
+    {{!-- <div class="text-sm text-center bg-warning">Preencher todos os campos obrigatórios (<code>*</code>)</div> --}}
+    <form action="/pedagogico/adNovoFormando" method="post">
+        {{!-- ID, número e noma --}}
+        <div class="row mt-3 ">
+            <div class="col-3">
+                <label for="id">ID</label>
+                <input type="text" name="idFake" value="{{idString}}" placeholder="A criar automáticamente"
+                    class="form-control" disabled>
+            </div>
+            <input type="hidden" name="id" value="{{idString}}">
+            <input type="hidden" name="numero" value="{{numero}}">
+            <div class="col-3">
+                <label for="id">Número</label>
+                <input type="text" name="numeroFake" value="{{numero}}" placeholder="A criar automáticamente"
+                    class="form-control" disabled>
+            </div>
+            <div class="col-6">
+                <label for="id">Nome<span class="text-danger"> *</span> </label><br>
+                <input type="text" name="nome" value="{{nome}}" placeholder="" class="form-control" required>
+            </div>
+        </div>
+
+        {{!-- Email, telefone e centro --}}
+        <div class="row mt-2">
+            <div class="col-3">
+                <label for="email">E-Mail<span class="text-danger"> *</span></label>
+                <input type="email" name="email" value="{{email}}" placeholder="exemplo@gmail.com" class="form-control"
+                    required>
+            </div>
+            <div class="col-3">
+                <label for="telefone">Telemóvel 1 <code>*</code></label>
+                <input type="text" name="telefone" value="{{telefone}}" placeholder="9_ _ _ _ _ _ _ _"
+                    class="form-control" required>
+            </div>
+            <div class="col-6">
+                <label for="centro">Centro<span class="text-danger">*</span></label>
+                <select name="centro" class="form-control">
+                    <option value="{{centro}}"> Selecionar </option>
+                    <option value="Centro de Formação Profissional do Andulo">Centro de Formação Profissional do Andulo
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        {{!-- Password, Perfil, Genero, Língua --}}
+        <div class="row mt-2">
+            <div class="col-3">
+                <label for="password">Password<span class="text-danger">*</span></label><br>
+                <input type="password" name="senha" value="{{senha}}" class="form-control" required>
+            </div>
+
+            <div class="col-3">
+                <label for="password2">Confirma<span class="text-danger">*</span></label><br>
+                <input type="password" name="senha2" value="{{senha2}}" placeholder="Repete a senha"
+                    class="form-control" required>
+            </div>
+
+            <div class="col-3">
+                <label for="categoria">Categoria</label><br>
+                <select name="categoria" class="form-control">
+                    <option value="formando">Formando</option>
+                </select>
+            </div>
+
+            <div class="col-3">
+                <label for="genero">Genero<span class="text-danger">*</span></label><br>
+                <select name="genero" class="form-control">
+                    <option value="{{genero}}"> Selecionar </option>
+                    <option value="F">Feminino</option>
+                    <option value="M">Masculino</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-6">
+                <label for="curso">Curso a frequentar <code>*</code></label>
+                <select name="idCurso" id="curso" required class="form-control">
+                    <option value="{{curso._id}}"> {{curso.nomeCurso}} </option>
+                    {{#each cursos}}
+                    <option value="{{_id}}"> {{nomeCurso}} </option>
+                    {{else}}
+                    <div class="text-center">Nenhum Curso cadastrado</div>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+
+        <hr>
+        {{!-- Outras informações --}}
+
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header bg-secondary">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Informações Pessoais
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <label for="naturalidade">Naturalidade</label>
+                                <input type="text" name="naturalidade" value="{{naturalidade}}" class="form-control">
+                            </div>
+                            <div class="col-3">
+                                <label for="dataNascimento">Data de Nascimento <code>*</code></label>
+                                <input type="date" name="dataNascimento" value="{{dataNascimento}}" data-format="dd-mm-yy" class="form-control"
+                                    required>
+                            </div>
+                            <div class="col-3">
+                                <label for="nacionalidade">Nacionalidade <code>*</code></label>
+                                <input type="text" name="nacionalidade" value="{{nacionalidade}}" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <label for="tipoDocumento">Tipo de Documento</label>
+                                <select name="tipoDocumento" class="form-control">
+                                    <option value="{{tipoDocumento}}"> {{tipoDocumento}} </option>
+                                    <option value="BI">Bilhete de Identidade</option>
+                                    <option value="passaporte">Passaporte</option>
+                                </select>
+                            </div>
+                            <div class="col-3">
+                                <label for="numBI">Nº Documento <code>*</code></label>
+                                <input type="text" name="numBI" value="{{numBI}}" class="form-control" required>
+                            </div>
+                            <div class="col-3">
+                                <label for="numContribuinte">Nº Contribuinte</label>
+                                <input type="text" name="numContribuinte" value="{{numContribuinte}}" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-3">
+                                <label for="dataEmissaoBI">Data de Emissão</label>
+                                <input type="date" name="dataEmissaoBI" value="{{dataEmissaoBI}}" class="form-control">
+                            </div>
+                            <div class="col-3">
+                                <label for="dataValidadeBI">Data de Validade</label>
+                                <input type="date" name="dataValidadeBI" value="{{dataValidadeBI}}" class="form-control">
+                            </div>
+                            <div class="col-3">
+                                <label for="arquivo">Arquivo</label>
+                                <input type="text" name="arquivo" value="{{arquivo}}" class="form-control">
+                            </div>
+                            <div class="col-3">
+                                <label for="estadoCivil">Estado Civil <code>*</code></label>
+                                <select name="estadoCivil" class="form-control">
+                                    <option value="{{estadoCivil}}"> {{estadoCivil}} </option>
+                                    <option value="casado">Casado</option>
+                                    <option value="solteiro">Solteiro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row my-2">
+                            <div class="col-6">
+                                <label for="necessidadeEspecial">Necessidades Especiais</label>
+                                <select name="necessidadeEspecial" class="form-control">
+                                    <option value="{{necessidadeEspecial}}"> {{necessidadeEspecial}} </option>
+                                    <option value="não">Não, não tenho nenhumma necessidade especial</option>
+                                    <option value="sim">Sim, tenho umma necessidade especial</option>
+                                </select>
+                            </div>
+                            <div class="col-6 ">
+                                <label for="descricaoNEE">Descrição das Nessecidades Especiais</label>
+                                <input type="text" name="descricaoNEE" value="{{descricaoNEE}}" class="form-control">
+                            </div>
+                        </div>
+                        <label for="outInfPessoais">Outras informações Pessoais</label>
+                        <input type="text" name="outInfPessoais" value="{{outInfPessoais}}" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Informações Profissionais
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        {{!-- Informações Profissionais --}}
+                        <div class="row mt-2">
+                            <div class="col-3">
+                                <label for="dataAdmissao">Data de Admissão</label>
+                                <input type="date" name="dataAdmissao" value="{{dataAdmissao}}" class="form-control">
+                            </div>
+                            <div class="col-3">
+                                <label for="dataSaida">Data de Saida</label>
+                                <input type="date" name="dataSaida" value="{{dataSaida}}" class="form-control">
+                            </div>
+                            <div class="col-3">
+                                <label for="inicioCarreiraP">Início na Carreira Profissional</label>
+                                <input type="date" name="inicioCarreiraP" value="{{inicioCarreiraP}}" class="form-control">
+                            </div>
+                            <div class="col-3">
+                                <label for="ultimoActEmpregador">Último/Actual Empregador</label>
+                                <input type="text" name="ultimoActEmpregador" value="{{ultimoActEmpregador}}" class="form-control">
+                            </div>
+                        </div>
+                        {{!-- --}}
+                        <div class="row mt-2">
+                            <div class="col-3">
+                                <label for="carteiraProf">Carteira Profissional</label>
+                                <select name="carteiraProf" class="form-control">
+                                    <option value="{{carteiraProf}}"> {{carteiraProf}} </option>
+                                    <option value="não Possui">Não Possui</option>
+                                    <option value="possui">Possui</option>
+
+                                </select>
+                            </div>
+                            <div class="col-3">
+                                <label for="especialidade">Especialidade</label>
+                                <input type="text" name="especialidade" value="{{especialidade}}" class="form-control">
+                            </div>
+                            <div class="col-3">
+                                <label for="grupoProfissional">Grupo Profissional</label>
+                                <input type="text" name="grupoProfissional" value="{{grupoProfissional}}" class="form-control">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Hablitações
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        {{!-- Hablitações --}}
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <label for="nivelAcademico">Nível Académico <code>*</code></label>
+                                <input type="text" name="nivelAcademico" value="{{nivelAcademico}}" class="form-control" required>
+                            </div>
+                            <div class="col-6">
+                                <label for="areaFormacao">Área</label>
+                                <input type="text" name="areaFormacao" value="{{areaFormacao}}" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-3">
+                                <label for="instituicaoEnsino">Instituição de Ensino <code>*</code></label>
+                                <input type="text" name="instituicaoEnsino" value="{{instituicaoEnsino}}" class="form-control">
+                            </div>
+                            <div class="col-3">
+                                <label for="cursosReferentes">Cursos Relevantes</label>
+                                <input type="text" name="cursosReferentes" value="{{cursosReferentes}}" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                        Contactos
+                    </button>
+                </h2>
+                <div id="flush-collapseFour" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <div class="row mt-2">
+                            <div class="col-6"></div>
+                            <div class="col-3">
+                                <label for="telefixo">Telefone Fixo</label>
+                                <input type="text" name="telefixo" value="{{telefixo}}" class="form-control">
+                            </div>
+                            <div class="col-3">
+                                <label for="telefone2">Telemóvel 2</label>
+                                <input type="text" name="telefone2" value="{{telefone2}}" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <label for="provincia">Província <code>*</code></label>
+                                <input type="text" name="provincia" value="{{provincia}}" class="form-control" required>
+                            </div>
+                            <div class="col-6">
+                                <label for="municipio">Município <code>*</code></label>
+                                <input type="text" name="municipio" value="{{municipio}}" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <label for="endereco">Endereço <code>*</code></label>
+                                <input type="text" name="endereco" value="{{endereco}}" class="form-control" required>
+                            </div>
+                            <div class="col-3">
+                                <label for="bairro">Bairro <code>*</code></label>
+                                <input type="text" name="bairro" value="{{bairro}}" class="form-control" required>
+                            </div>
+                            <div class="col-3">
+                                <label for="localidade">Localidade <code>*</code></label>
+                                <input type="text" name="localidade" value="{{localidade}}" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{!-- Fim de outras --}}
+        <div class="modal-footer text-center mt-3">
+            <input type="hidden" name="candidato" value="{{candidato}}">
+            <a href="/pedagogico/formandos" class="btn btn-sm btn-secondary mx-2">Cancelar</a>
+            <button type="submit" class="btn btn-sm btn-success">Cadastrar</button>
+        </div>
+    </form>
+</div>
