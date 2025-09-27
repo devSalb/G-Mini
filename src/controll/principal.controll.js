@@ -1,4 +1,3 @@
-import { findAllCursosService } from "../services/curso.service.js";
 import { createVisita } from "../services/visitantes.servece.js";
 
 
@@ -7,7 +6,7 @@ export const principal = async (req, res) => {
         const visitante = {
             nome: "Visita"
         }
-        await createVisita(visitante)        
+        //await createVisita(visitante)        
         return res.render("principal/home")
     } catch (error) {
         return res.status(500).send({mesage: error.message})
