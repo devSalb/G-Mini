@@ -3,8 +3,6 @@ import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import { findUserByIdService } from '../src/services/usuario.service.js';
 import cookieParser from 'cookie-parser';
-//import { findFuncionariosUser } from '../src/services/funcionario.service.js';
-//import { findDefincoesAndUpdateService, findDefinicoesService } from '../src/services/definicao.service.js';
 dotenv.config()
 
 export const eAdmin = (req, res, next) => {
@@ -36,108 +34,6 @@ export const eFinanc = (req, res, next) => {
     }
     req.flash('error_msg', 'Acesso não autorizado!')
     res.redirect('/')
-}
-
-export const eJuriPresidente = async (req, res, next) => {
-    const funcionario = await findFuncionariosUser(req.user._id)
-    if (funcionario.cargo == "Júri Presidente" || req.user.eAdmin === 1) {
-        //return res.send(req.user)
-        return next();
-    }
-    req.flash('error_msg', 'Acesso não autorizado!')
-    res.redirect('/')
-
-}
-
-export const eCoordCurso = async (req, res, next) => {
-    const funcionario = await findFuncionariosUser(req.user._id)
-    if (funcionario.cargo == "Coordenador de Curso" || req.user.eAdmin === 1) {
-        //return res.send(req.user)
-        return next();
-    }
-    req.flash('error_msg', 'Acesso não autorizado!')
-    res.redirect('/')
-
-}
-
-export const pago = async (req, res, next) => {
-    const date = new Date();
-    let dia = date.getDate();
-    let mes = date.toLocaleString('default', { month: 'long' });
-    let ano = date.getFullYear();
-    let mesActualInt = 0
-    
-   /*  const user = await findUserByIdService(decoded.id);
-    req.userId = user._id;
-    req.user = user
-    return res.send({user})  */
-
-    const definicao = await findDefinicoesService()
-    
-
-
-    switch (mes) {
-        case "janeiro":
-            mesActualInt = 1
-            break;
-            
-        case "fevereiro":
-            mesActualInt = 2
-            break;
-
-        case "março":
-            mesActualInt = 3
-            break;
-
-        case "abril":
-            mesActualInt = 4
-            break;
-
-        case "maio":
-            mesActualInt = 5
-            break;
-
-        case "junho":
-            mesActualInt = 6
-            break;
-
-        case "julho":
-            mesActualInt = 7
-            break;
-
-        case "agosto":
-            mesActualInt = 8
-            break;
-
-        case "setembro":
-            mesActualInt = 9
-            break;
-
-        case "outubro":
-            mesActualInt = 10
-            break;
-
-        case "novembro":
-            mesActualInt = 11
-            break;
-
-        case "dezembro":
-            mesActualInt = 12
-            break;
-    
-        default:
-            break;
-    }
-    
-    if (definicao.fimDoPrazo == true ) {return res.render('admin/pago')}
-    if((definicao.diaLimite == dia || definicao.diaLimite < dia) && (definicao.mesLimite == mesActualInt || definicao.mesLimite < mesActualInt) ){
-        console.log(mesActualInt)
-        definicao.fimDoPrazo = true
-        await findDefincoesAndUpdateService(definicao._id, definicao)
-    }
-    
-    return next()
-
 }
 
 export const veryLogin = async (req, res, next) => {

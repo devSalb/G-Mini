@@ -3,7 +3,7 @@ import pdf from 'html-pdf'
 import ejs from 'ejs'
 
 import { createFuncionarioService, findAllFuncionariosService, findFuncionarioAndDeleteService, findFuncionariosByIdService } from "../services/funcionario.service.js"
-import { createUserService, findUserByUsername } from "../services/usuario.service.js"
+import { createUserService } from "../services/usuario.service.js"
 
 
 export const homeRH = async (req, res) => {

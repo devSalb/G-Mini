@@ -6,13 +6,13 @@ import pdf from 'html-pdf'
 import aluno from "../models/aluno.modell.js"
 import { createAlunoService, findAlunoAnDeleteSercice, findAlunoByBIService, findAlunoByIdAndUpdate, findAlunoByIdService, findAlunosByIdTurma } from "../services/alunos.servece.js"
 import { findAnoLectivoByEstadoService } from "../services/anoLectivo.service.js"
-import { deleteMinipautaProfService, deleteTurmaProfService, findAllFuncionariosService, findFuncionariosByIdService } from "../services/funcionario.service.js"
+import { findAllFuncionariosService, findFuncionariosByIdService } from "../services/funcionario.service.js"
 import { createNotasDisciplinaService, findNotaDisciplinaByIdAndDeleteService, findNotaDisciplinaByIdService, findNotasDisciplinaByIdAluno, findNotasDisciplinaByIdAlunoAndDelete, findNotasDisciplinaByIdMinipautaService } from "../services/notasDisciplina.service.js"
-import { findTurmaByCodigoServece, findTurmaByIdAndDeleteSerice, findTurmaByIdAndUpdService, findTurmaByIdCursoService, findTurmaByIdService } from "../services/turma.service.js"
+import { findTurmaByIdAndDeleteSerice, findTurmaByIdAndUpdService, findTurmaByIdCursoService, findTurmaByIdService } from "../services/turma.service.js"
 import { createUserService, findAllUsers, findByUsernameService, findUserByIdAndDelet, findUserByIdService } from "../services/user.service.js"
 import { createNotaTrimestral, findNotaByIdAndUpdateSerice, findNotasExistentByIdService } from '../services/notas.service.js'
 import { calcularMedias } from '../middlewares/professor.middlewere.js'
-import { findMiniPautaByIdAndDelete, findMinipautaByIdAndUpdateService, findMinipautaByIdService, findMinipautasByIdProfessorService } from '../services/minipauta.service.js'
+import { findMiniPautaByIdAndDelete, findMinipautaByIdAndUpdateService, findMinipautaByIdService } from '../services/minipauta.service.js'
 import { findClasseByIdService } from '../services/classe.service.js'
 import { findAllVisitasServece } from '../services/visitantes.servece.js'
 
@@ -38,7 +38,7 @@ export const editarFoto = async (req, res) => {
 }
 export const addAluno = async (req, res) => {
     try {
-        return res.send("Sucesso!")
+        //return res.send("Sucesso!")
         const idTurma = req.body.idTurma
         const numBI = req.body.numBI
         const classe = req.body.classe
@@ -53,7 +53,7 @@ export const addAluno = async (req, res) => {
 
         //CRIAR USUÁRIO
         const nomeArray = nome.split(" ")
-        const username0 = nomeArray[0] + '@ndunduma' + turma.codigo + '.' + nomeArray[1]
+        const username0 = nomeArray[0] + '@al' + turma.codigo + '.' + nomeArray[1]
         const username = username0.toLocaleLowerCase()
         const senha = turma.codigo + '-' + nomeArray[1]
 
@@ -255,19 +255,6 @@ export const eliminarNotasDisciplina = async (req, res) => {
         });
 
         await findNotaDisciplinaByIdAndDeleteService(idNotasD)
-
-
-        //        const notasDisciplina = await findNotasDisciplinaByIdMinipautaService(idMinipauta)
-
-        /*  notasDisciplina.forEach(async notaD => {
-             console.log({notaD})
-         }); */
-
-        //return res.send({notasDisciplina})
-        //para remover o professor da turma e retiralo a minipauta
-        //const result = await deleteTurmaProfService(idProfessor, idTurma, idMinipauta, nomeDisciplina)
-        //await findMiniPautaByIdAndDelete(idMinipauta)
-
         req.flash('error_msg', 'Foram eliminadas as notas falsas nas ficha dos alunos desta turma!')
         res.redirect('/turmas/turma/' + idTurma)
     } catch (error) {
@@ -341,43 +328,7 @@ export const listaUserPDF = async (req, res) => {
         const diaR = date
         let dia = date.getDate();
         let mes = date.toLocaleString('default', { month: 'long' });
-        let ano = date.getFullYear();
-
-
-
-        //GERANDO PDF com puppeteer
-        /* const browser = await puppeteer.launch({headless: false})
-        const page = await browser.newPage()
-        
-        await page.goto('http://localhost:8081', {
-            waitUntil: 'networkidle0'
-        })
-        //return res.send('Sucesso!')
-        
-        const pdf = await page.pdf({
-            printBackground: true,
-            format: 'A4',
-            orientation: 'Landscape',
-            path: 'webPDF.pdf',
-            margin: {
-                top: '20px',
-                bottom: '40px',
-                left: '20px',
-                right: '20px'
-            }
-        }).then(_=> {
-            console.log('PDF Criado co sucesso!')
-        }).catch(e => {
-            console.log('Hoive um erro ao criar o PDF!:'+e)
-
-        })
-        
-        await browser.close()
-        res.contentType("application/pdf")
-
-        return res.send(pdf) */
-
-
+        //let ano = date.getFullYear();
         //GERANDO PDF com html-pdf
         ejs.renderFile("./views/admin/listaUserPDF.ejs", { dia: dia, mes: mes, ano: ano, funcionarios }, (err, html) => {
             if (err) {

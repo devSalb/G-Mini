@@ -3,7 +3,7 @@ import pdf from 'html-pdf'
 import ejs from 'ejs'
 
 import { cadastrarCurso, findCursoByIDService, findCursoByNomeService, findCursoByIdAndUpdateDServece, findCursoAndDeleteServece } from "../services/curso.service.js"
-import { createFormandoService, findAllFormandosService, findAlunosByIdTurma, findFormandoAndUpdateServece, findFormandoByIdAndDelete, findFormandoByIdServise, findFormandoByUser, findFormandosByIdCurso, findFormandosByIDTurmaService, findFormandosInscritosServece } from "../services/alunos.servece.js"
+import { createFormandoService, findAllFormandosService, findAlunosByIdTurma, findFormandoAndUpdateServece, findFormandoByIdAndDelete, findFormandoByIdServise, findFormandosByIdCurso, findFormandosByIDTurmaService, findFormandosInscritosServece } from "../services/alunos.servece.js"
 import { findAllFormadoresServoce, findFuncionarioByIdAndUpdateService, findFuncionariosByIdService } from "../services/funcionario.service.js"
 import { creatMinipautaService, findAllMinipautasService, findAllMinipautasServiceGeral } from "../services/minipauta.service.js"
 import { createModulo, findModulosByIdCursoSercice } from "../services/modulos.servoce.js"
@@ -69,7 +69,7 @@ export const curso = async (req, res) => {
 
 export const novoCursoW = async (req, res) => {
     try {
-        const cursos = await findAllMinipautasService()()
+        const cursos = await findAllMinipautasService()
         //return res.send({cursos})
         const codCurso = "INEFOp-C025-0" + (cursos.length + 1)
         res.render("pedagogico/novoCurso", { codCurso })
@@ -102,7 +102,7 @@ export const novoCursoSave = async (req, res) => {
 
 export const cursosPublic = async (req, res) => {
     try {
-        let cursos = await findAllMinipautasService()()
+        let cursos = await findAllMinipautasService()
         let informatica = true
         cursos.forEach(curso => {
             if (curso.nomeCurso == "Informática na Ótica do Utilizador") { curso.imagem = "informatica.jpeg"; curso.informatica = informatica }

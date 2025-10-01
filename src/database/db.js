@@ -15,11 +15,9 @@ const connectDB = () => {
         }).catch((erro)=>{
         console.log("Erro de Conexão com o BD Local: " + erro)
         })
-    }) 
-
-    
+    })  
 }
-//
+
 
 
 

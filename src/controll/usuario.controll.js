@@ -1,5 +1,5 @@
 import { createUserService, findAllUsers, findByUsernameService, findUserBIdAndUpdate, findUserByIdAndDelet, findUserByIdService, findUserByNumBIService, findUserByUsername, generateToken } from "../services/usuario.service.js"
-import { authMidleware, authMidlewareEditSenha } from '../middlewares/auth.middleware.js'
+import { authMidleware } from '../middlewares/auth.middleware.js'
 import passport from 'passport'
 //import { findAlunoByIdAndUpdate, findAlunoByIdService, findAlunoByIdUser } from "../services/aluno.service.js";
 import cookieParser from 'cookie-parser'
@@ -145,7 +145,7 @@ export const login = async (req, res, next) => {
 
         }
     } catch (error) {
-        res.status(500).send({ mesage: error.mesage })
+       return res.status(500).send({ mesage: error.mesage })
     }
 }
 
