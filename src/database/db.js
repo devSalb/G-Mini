@@ -4,8 +4,9 @@ const connectDB = () => {
 
     mongoose.Promise = global.Promise;
 
-    //Trabalhando com a conexáo do Atlas
-    mongoose.connect("mongodb+srv://salomao:terebango12@gmini.objxd9b.mongodb.net/").then(() => {
+
+    //Trabalhando com a conexáo do Atlas 
+    mongoose.connect("mongodb+srv://devsalb9_db_user:CMUvwqoMF7S58ctJ@cluster0.aquxdbj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0").then(() => {
         console.log("BD G-MINI Mongo Atlas conectado em online!")
     }).catch((erro) => {
         console.log("Erro de Conexão com Mongo Atlas: " + erro)

@@ -128,10 +128,13 @@ app.use(express.urlencoded({extended: true}))
         }));
         app.set("view engine", "handlebars");
         app.set("views", path.join(__dirname, "views"))
+
+
     //Conectar BD e crir definições do systema se não existir 
    connectDB()
    //syDefinicoes() //Esta função cria a definição do sistema, uma única vez
-
+   
+   
 //Body Parser
 import bodyParser from 'body-parser'
 //import router from "./src/routes/user.routes.js"
@@ -183,4 +186,4 @@ app.use(bodyParser.json())
 
 
 
-app.listen(port, () => console.log("Servidor SGFPAO-ANDULO rodando..."))
+app.listen(port, () => console.log("Servidor G-Mini rodando..."))
